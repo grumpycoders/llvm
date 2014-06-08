@@ -290,6 +290,10 @@ public:
   /// instructions in verbose mode.
   virtual void emitImplicitDef(const MachineInstr *MI) const;
 
+  virtual void printInstructionText(const char * text, raw_ostream &OS);
+  virtual void printLiteralText(const char * text, raw_ostream &OS);
+  virtual void printLiteralChar(char c, raw_ostream &OS);
+
   //===------------------------------------------------------------------===//
   // Symbol Lowering Routines.
   //===------------------------------------------------------------------===//

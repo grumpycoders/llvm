@@ -71,6 +71,10 @@ public:
   virtual void printInst(const MCInst *MI, raw_ostream &OS,
                          StringRef Annot) = 0;
 
+  virtual void printInstructionText(const char * text, raw_ostream &OS);
+  virtual void printLiteralText(const char * text, raw_ostream &OS);
+  virtual void printLiteralChar(char c, raw_ostream &OS);
+
   /// getOpcodeName - Return the name of the specified opcode enum (e.g.
   /// "MOV32ri") or empty if we can't resolve it.
   StringRef getOpcodeName(unsigned Opcode) const;
