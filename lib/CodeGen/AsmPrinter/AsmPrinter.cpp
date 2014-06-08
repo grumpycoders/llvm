@@ -2262,3 +2262,16 @@ GCMetadataPrinter *AsmPrinter::GetOrCreateGCPrinter(GCStrategy *S) {
 
   report_fatal_error("no GCMetadataPrinter registered for GC: " + Twine(Name));
 }
+
+
+void AsmPrinter::printInstructionText(const char * text, raw_ostream &OS) {
+    OS << "\t" << text;
+}
+
+void AsmPrinter::printLiteralText(const char * text, raw_ostream &OS) {
+    OS << text;
+}
+
+void AsmPrinter::printLiteralChar(char c, raw_ostream &OS) {
+    OS << c;
+}

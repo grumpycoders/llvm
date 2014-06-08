@@ -29,8 +29,8 @@ static bool isIdentChar(char C) {
 std::string AsmWriterOperand::getCode() const {
   if (OperandType == isLiteralTextOperand) {
     if (Str.size() == 1)
-      return "O << '" + Str + "'; ";
-    return "O << \"" + Str + "\"; ";
+      return "printLiteralChar('" + Str + "', OS); ";
+    return "printLiteralText(\"" + Str + "\", OS); ";
   }
 
   if (OperandType == isLiteralStatementOperand)
@@ -39,7 +39,7 @@ std::string AsmWriterOperand::getCode() const {
   std::string Result = Str + "(MI";
   if (MIOpNo != ~0U)
     Result += ", " + utostr(MIOpNo);
-  Result += ", O";
+  Result += ", OS";
   if (!MiModifier.empty())
     Result += ", \"" + MiModifier + '"';
   return Result + "); ";

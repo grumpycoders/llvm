@@ -108,3 +108,15 @@ format_object1<uint64_t> MCInstPrinter::formatHex(const uint64_t Value) const {
   }
   llvm_unreachable("unsupported print style");
 }
+
+void MCInstPrinter::printInstructionText(const char * text, raw_ostream &OS) {
+    OS << "\t" << text;
+}
+
+void MCInstPrinter::printLiteralText(const char * text, raw_ostream &OS) {
+    OS << text;
+}
+
+void MCInstPrinter::printLiteralChar(char c, raw_ostream &OS) {
+    OS << c;
+}
