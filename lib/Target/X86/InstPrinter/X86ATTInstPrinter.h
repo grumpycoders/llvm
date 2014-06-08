@@ -39,15 +39,15 @@ public:
   void printInstruction(const MCInst *MI, raw_ostream &OS);
   static const char *getRegisterName(unsigned RegNo);
 
-  void printOperand(const MCInst *MI, unsigned OpNo, raw_ostream &OS);
-  void printMemReference(const MCInst *MI, unsigned Op, raw_ostream &OS);
-  void printSSECC(const MCInst *MI, unsigned Op, raw_ostream &OS);
-  void printAVXCC(const MCInst *MI, unsigned Op, raw_ostream &OS);
-  void printPCRelImm(const MCInst *MI, unsigned OpNo, raw_ostream &OS);
-  void printSrcIdx(const MCInst *MI, unsigned OpNo, raw_ostream &OS);
-  void printDstIdx(const MCInst *MI, unsigned OpNo, raw_ostream &OS);
-  void printMemOffset(const MCInst *MI, unsigned OpNo, raw_ostream &OS);
-  void printRoundingControl(const MCInst *MI, unsigned Op, raw_ostream &OS);
+  virtual void printOperand(const MCInst *MI, unsigned OpNo, raw_ostream &OS);
+  virtual void printMemReference(const MCInst *MI, unsigned Op, raw_ostream &OS);
+  virtual void printSSECC(const MCInst *MI, unsigned Op, raw_ostream &OS);
+  virtual void printAVXCC(const MCInst *MI, unsigned Op, raw_ostream &OS);
+  virtual void printPCRelImm(const MCInst *MI, unsigned OpNo, raw_ostream &OS);
+  virtual void printSrcIdx(const MCInst *MI, unsigned OpNo, raw_ostream &OS);
+  virtual void printDstIdx(const MCInst *MI, unsigned OpNo, raw_ostream &OS);
+  virtual void printMemOffset(const MCInst *MI, unsigned OpNo, raw_ostream &OS);
+  virtual void printRoundingControl(const MCInst *MI, unsigned Op, raw_ostream &OS);
 
   void printopaquemem(const MCInst *MI, unsigned OpNo, raw_ostream &O) {
     printMemReference(MI, OpNo, O);
