@@ -62,6 +62,8 @@ ObjectFile::createObjectFile(std::unique_ptr<MemoryBuffer> &Object,
   case sys::fs::file_magic::elf_executable:
   case sys::fs::file_magic::elf_shared_object:
   case sys::fs::file_magic::elf_core:
+  case sys::fs::file_magic::elf_os_specific:
+  case sys::fs::file_magic::elf_proc_specific:
     return createELFObjectFile(Object);
   case sys::fs::file_magic::macho_object:
   case sys::fs::file_magic::macho_executable:

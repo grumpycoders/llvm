@@ -49,6 +49,8 @@ ErrorOr<Binary *> object::createBinary(std::unique_ptr<MemoryBuffer> Buffer,
     case sys::fs::file_magic::elf_executable:
     case sys::fs::file_magic::elf_shared_object:
     case sys::fs::file_magic::elf_core:
+    case sys::fs::file_magic::elf_os_specific:
+    case sys::fs::file_magic::elf_proc_specific:
     case sys::fs::file_magic::macho_object:
     case sys::fs::file_magic::macho_executable:
     case sys::fs::file_magic::macho_fixed_virtual_memory_shared_lib:

@@ -748,6 +748,8 @@ ObjectImage *RuntimeDyld::loadObject(ObjectBuffer *InputBuffer) {
   case sys::fs::file_magic::elf_executable:
   case sys::fs::file_magic::elf_shared_object:
   case sys::fs::file_magic::elf_core:
+  case sys::fs::file_magic::elf_os_specific:
+  case sys::fs::file_magic::elf_proc_specific:
     InputImage.reset(RuntimeDyldELF::createObjectImage(InputBuffer));
     if (!Dyld)
       Dyld = createRuntimeDyldELF(MM, ProcessAllSections).release();

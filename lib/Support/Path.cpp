@@ -967,7 +967,8 @@ file_magic identify_magic(StringRef Magic) {
         bool Data2MSB = Magic[5] == 2;
         unsigned high = Data2MSB ? 16 : 17;
         unsigned low  = Data2MSB ? 17 : 16;
-        if (Magic[high] == 0)
+        switch (Magic[high]) {
+        case 0:
           switch (Magic[low]) {
             default: break;
             case 1: return file_magic::elf_relocatable;
@@ -975,6 +976,14 @@ file_magic identify_magic(StringRef Magic) {
             case 3: return file_magic::elf_shared_object;
             case 4: return file_magic::elf_core;
           }
+          break;
+        case 0xfe:
+          return file_magic::elf_os_specific;
+          break;
+        case 0xff:
+          return file_magic::elf_proc_specific;
+          break;
+        }
       }
       break;
 
