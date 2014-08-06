@@ -967,7 +967,7 @@ file_magic identify_magic(StringRef Magic) {
         bool Data2MSB = Magic[5] == 2;
         unsigned high = Data2MSB ? 16 : 17;
         unsigned low  = Data2MSB ? 17 : 16;
-        switch (Magic[high]) {
+        switch ((unsigned char)Magic[high]) {
         case 0:
           switch (Magic[low]) {
             default: break;
